@@ -180,19 +180,19 @@ def about_breadcrumbs():
 @blueprint.route('/about')
 def about():
     """Render view for general about page."""
-    return redirect('/docs/cern-open-data-portal')
+    return redirect('/docs/welcome')
 
 
 @blueprint.route('/about/<exp>')
 def about_exp(exp):
     """Render about <experiment> pages."""
-    return redirect('/docs/about-{}'.format(exp))
+    return redirect('/docs/{}-about'.format(exp))
 
 
 @blueprint.route('/about/cms-pileup-simulation')
 def cms_pileup_simulation():
     """Render cms pileup simulation template."""
-    return redirect('/docs/cms-pile-up-simulation')
+    return redirect('/docs/cms-guide-pileup-simulation')
 
 
 @blueprint.route('/about/cms-simulated-dataset-names')
@@ -206,7 +206,7 @@ def about_cms_dataset_names():
 @blueprint.route('/getting-started/<exp>')
 def getting_started_redirect(exp):
     """Redirects to associated experiment."""
-    return redirect('/docs/getting-started-with-%s-open-data' % exp,
+    return redirect('/docs/%s-getting-started' % exp,
                     code=302)
 
 
@@ -215,9 +215,9 @@ def vm_redirect(exp, year):
     """Redirects to associated experiment."""
     if year:
         return redirect(
-            '/docs/%s-%s-virtual-machines-how-to-install' % (exp, year),
+            '/docs/%s-virtual-machine-%s' % (exp, year),
             code=302)
-    return redirect('/docs/%s-virtual-machines-how-to-install' % exp,
+    return redirect('/docs/%s-virtual-machine' % exp,
                     code=302)
 
 
